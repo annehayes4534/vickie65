@@ -133,7 +133,7 @@ def get_download_urls(download_urls, slugs, driver):
 
     urls = []
     for download_url, slug in zip(download_urls, slugs):
-        filemoon_download_url = download_url.replace("filemoon.in", "filemoon.sx")
+        filemoon_download_url = download_url #.replace("filemoon.in", "filemoon.sx")
         driver.get(filemoon_download_url)
         driver.set_window_size(667, 920)
 
