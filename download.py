@@ -95,9 +95,8 @@ def store_slug(slug):
 def download(urls: list):
     for url in urls:
         for slug, download_link in url.items():
+            log = None
             try:
-                log = ini_logger("downloading")
-
                 filename = f"{slug}.mp4"
                 result = os.system(
                     f"bash mcurl.sh -s 8 -o '{filename}' '{download_link}'"
@@ -134,7 +133,6 @@ def get_download_urls(download_urls, slugs, driver):
     """Download the files using the given download URLs."""
 
     urls = []
-    log = ini_logger("DOWNLOAD URL")
     for download_url, slug in zip(download_urls, slugs):
         filemoon_download_url = download_url.replace("filemoon.in", "filemoon.sx")
         driver.get(filemoon_download_url)
@@ -180,7 +178,6 @@ def prepare_slug():
     slugs = []
 
     with get_page_source() as driver:
-        log = ini_logger("COLLECT SLUG")
         for i, url_line in enumerate(urls, start=1):
             urls = url_line.split(",")
             slug = urls[0]
@@ -225,4 +222,6 @@ def prepare_slug():
 
 # Example of how to call the function
 if __name__ == "__main__":
+
+    log = ini_logger("DOWNLOAD")
     prepare_slug()
