@@ -95,7 +95,6 @@ def store_slug(slug):
 def download(urls: list):
     for url in urls:
         for slug, download_link in url.items():
-            log = None
             try:
                 filename = f"{slug}.mp4"
                 result = os.system(
