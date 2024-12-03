@@ -59,7 +59,7 @@ def get_page_source(url: str = "https://google.com"):
     # options.add_argument("-private")
     # d = webdriver.Firefox(service=FirefoxService(), options=options)
     
-    d = uc.Chrome(version_main = 129)
+    d = uc.Chrome(version_main = 131)
     d.get(url)
 
     return d  # Return the page source directly
