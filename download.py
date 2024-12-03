@@ -10,6 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+import undetected_chromedriver as uc
+
 # Replace these with your own values
 api_id = os.getenv("API_ID")
 api_hash = os.getenv("API_HASH")
@@ -54,8 +56,10 @@ def ini_logger(title: str) -> logging.Logger:
 def get_page_source(url: str = "https://google.com"):
     # Set up the WebDriver for Firefox
     options = Options()
-    options.add_argument("-private")
-    d = webdriver.Firefox(service=FirefoxService(), options=options)
+    # options.add_argument("-private")
+    # d = webdriver.Firefox(service=FirefoxService(), options=options)
+    
+    d = uc.Chrome(version_main = 129)
     d.get(url)
 
     return d  # Return the page source directly
